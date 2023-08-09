@@ -2,13 +2,31 @@
 
 <h1>Friends List</h1>
 
-<div id="friends">
-  <% @friends.each do |friend| %>
-    <%= render friend %>
-    <p>
-      <%= link_to "Show this friend", friend %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New friend", new_friend_path %>
+<center>   
+    <%= link_to "Add new friend", new_friend_path, class: "btn btn-primary" %>
+</center>
+<br>
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Phone</th>
+      <th scope="col">Twitter</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  
+  <tbody>
+    <% @friends.each do |friend| %>
+      <tr>
+        <td><%= friend.first_name%></td>
+        <td><%= friend.last_name%></td>
+        <td><%= friend.phone%></td>
+        <td><%= friend.twitter%></td>
+        <td><%= link_to "Show", friend, class: "btn btn-primary" %> <%= link_to "Edit", edit_friend_path(friend), class: "btn btn-warning" %> <%= link_to "Destroy", friend, method: :delete, data: { turbo: false }, class: "btn btn-danger" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

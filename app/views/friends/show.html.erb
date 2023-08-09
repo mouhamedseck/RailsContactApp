@@ -1,10 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @friend %>
-
-<div>
-  <%= link_to "Edit this friend", edit_friend_path(@friend) %> |
-  <%= link_to "Back to friends", friends_path %>
-
-  <%= button_to "Destroy this friend", @friend, method: :delete %>
+<div class="card text-center">
+  <div class="card-header">
+    <h5 class="card-title"><%= @friend.first_name%> <%= @friend.last_name%> </h5>
+  </div>
+  <div class="card-body">
+    <p class="card-text"><%= @friend.email%></p>
+    <p class="card-text"><%= @friend.phone%></p>
+    <p class="card-text"><%= @friend.twitter%></p>
+    <%= link_to "Edit this friend", edit_friend_path(@friend), class: "btn btn-secondary" %> |
+    <%= link_to "Back to friends", friends_path, class: "btn btn-dark" %>
+    <br><br>
+    <%= button_to "Destroy this friend", @friend, method: :delete, class: "btn btn-danger" %>
+  </div>
+  <div class="card-footer text-muted">
+   FriendsApp
+  </div>
 </div>
